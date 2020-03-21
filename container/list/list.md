@@ -88,19 +88,19 @@ func (l *List) insert(e, at *Element) *Element {
 ```go
 // remove removes e from its list, decrements l.len, and returns e.
 func (l *List) remove(e *Element) *Element {
-	e.prev.next = e.next//步骤1
-	e.next.prev = e.prev//步骤2
-	e.next = nil // avoid memory leaks //步骤3
-	e.prev = nil // avoid memory leaks //步骤4
+	e.prev.next = e.next
+	e.next.prev = e.prev
+	e.next = nil // avoid memory leaks 
+	e.prev = nil // avoid memory leaks 
 	e.list = nil
 	l.len--
 	return e
 }
 ```
- - e的上一个节点的后驱指向e的后驱节点指针
- - 当前元素e的下一个节点的前驱指向e的前驱节点指针
- - e的后驱指针置为nil
- - e的前驱指针置为nil
+ - e的上一个节点的后驱指向e的后驱节点指针   //步骤1
+ - 当前元素e的下一个节点的前驱指向e的前驱节点指针   //步骤2
+ - e的后驱指针置为nil   //步骤3
+ - e的前驱指针置为nil   //步骤4
  - 链表长度-1
 
 元素的移动
